@@ -9,7 +9,6 @@ import os
 import copy
 from collections import deque
 
-#os.environ["PYSPARK_SUBMIT_ARGS"] = "--packages graphframes:graphframes:0.8.2-spark3.1-s_2.12 pyspark-shell"
 
 filter_threshold = int(sys.argv[1])
 input_file_path = sys.argv[2]
@@ -139,7 +138,7 @@ node_degree_search = neighbor_graphRDD.map(lambda x: (x[0], len(x[1]))).collectA
 community_network = copy.deepcopy(neighbor_graph)
 networks = networkRDD.collect()
 connection_sum = len(networks)
-value_2m = 2 * connection_sum# The “m” in the formula represents the edge number of the original graph.
+value_2m = 2 * connection_sum # The “m” in the formula represents the edge number of the original graph.
 
 global_highest_modularity = -1
 best_community_set = []
@@ -197,13 +196,6 @@ with open(community_output_file_path, 'w')as f:
         f.write(str(i)[1:-1])#.replace("'","").replace(" ",""))
         f.write('\n')    
                                        
-                    
-                
-            
-
-        
-
-
 
 
 time_end = time.time()
